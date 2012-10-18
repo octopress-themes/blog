@@ -9,7 +9,7 @@
   <meta name="author" content="Octopress Themes">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="Why do you want to add email subscription? An email subscription form is one of the most common features you see on blogs. Yet it is not present by &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,234 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress/">How to Add an Email Subscription Plugin on Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-18T06:28:00+08:00" pubdate data-updated="true">Oct 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Why do you want to add email subscription?</h2>
+
+<p>An email subscription form is one of the most common features you see on blogs. Yet it is not present by default on <a href="http://octopress.org">Octopress</a>. Besides RSS feeds, your blog should provide an option for readers to subscribe by email. Having a way to reach your readers is <a href="http://www.kalzumeus.com/2012/05/31/can-i-get-your-email/">never a bad thing</a>. It is going to look just like the email subscription section you see on this blog(hint: on the right). Luckily, it is simple enough that you can create one in 5 minutes.</p>
+
+<h2>Creating a mailing list on MailChimp</h2>
+
+<p>We are going to use <a href="http://mailchimp.com">MailChimp</a> to create a mailing list for your blog readers. We want to create the mailing list and grab the embedded subcription form. If you already know how to do this, skip this section.</p>
+
+<p>After you have created a mailing list, go to the list of mailing lists. There should be an options icon on the right. View the options and select the <strong>forms</strong> link.</p>
+
+<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-list-options-screenshot.png" title="List options screenshot" alt="Mailchimp list options screenshot"></p>
+
+<p>You should be led to the create form page. Find the <strong>Share it</strong> tab and click it.</p>
+
+<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-build-form-tab-screenshot.png" title="Build form tab" alt="Mailchimp build form tab screenshot"></p>
+
+<p>You should see the <strong>Share it</strong> tab. Click on the <strong>Create HTML Code For A Small Subscribe Form</strong> button.</p>
+
+<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-share-form-tab-screenshot.png" title="Share form" alt="Mailchimp share form screenshot"></p>
+
+<p>Select the <strong>Naked Form</strong> option.</p>
+
+<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-naked-form-option-screenshot.png" title="Naked form" alt="Mailchimp naked form option screenshot"></p>
+
+<p>And you should be greeted with the embedded form. Copy the code into your text editor.</p>
+
+<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-embedded-form-screenshot.png" title="Embedded form" alt="Mailchimp embedded form screenshot"></p>
+
+<h2>Creating the email subscribe section</h2>
+
+<p>We are going to add a new aside section on your Octopress config. I am assuming the new subscribe section is located at <strong>custom/asides/subscribe.html</strong>.</p>
+
+<figure class='code'><figcaption><span>_config.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">default_asides</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">custom/asides/about.html</span><span class="p-Indicator">,</span> <span class="nv">custom/asides/subscribe.html</span><span class="p-Indicator">,</span> <span class="nv">asides/recent_posts.html</span><span class="p-Indicator">,</span> <span class="nv">asides/github.html</span><span class="p-Indicator">,</span> <span class="nv">asides/twitter.html</span><span class="p-Indicator">,</span> <span class="nv">asides/delicious.html</span><span class="p-Indicator">,</span> <span class="nv">asides/pinboard.html</span><span class="p-Indicator">,</span> <span class="nv">asides/googleplus.html</span><span class="p-Indicator">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On your subscribe section, add the following code. It should be very similar to the code you copied from MailChimp.</p>
+
+<figure class='code'><figcaption><span>source/custom/asides/subscribe.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;h1&gt;</span>Subscribe<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- Begin MailChimp Signup Form --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mc_embed_signup&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;http://url-to-your-mailing-list&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">id=</span><span class="s">&quot;mc-embedded-subscribe-form&quot;</span> <span class="na">name=</span><span class="s">&quot;mc-embedded-subscribe-form&quot;</span> <span class="na">class=</span><span class="s">&quot;validate&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span> <span class="na">novalidate</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mc-field-group&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;mce-EMAIL&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    Enter your email to receive updates
+</span><span class='line'>  <span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">name=</span><span class="s">&quot;EMAIL&quot;</span> <span class="na">class=</span><span class="s">&quot;required email&quot;</span> <span class="na">id=</span><span class="s">&quot;mce-EMAIL&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mce-responses&quot;</span> <span class="na">class=</span><span class="s">&quot;clear&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;response&quot;</span> <span class="na">id=</span><span class="s">&quot;mce-error-response&quot;</span> <span class="na">style=</span><span class="s">&quot;display:none&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;response&quot;</span> <span class="na">id=</span><span class="s">&quot;mce-success-response&quot;</span> <span class="na">style=</span><span class="s">&quot;display:none&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clear&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Subscribe&quot;</span> <span class="na">name=</span><span class="s">&quot;subscribe&quot;</span> <span class="na">id=</span><span class="s">&quot;mc-embedded-subscribe&quot;</span> <span class="na">class=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/form&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!--End mc_embed_signup--&gt;</span>
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Remember to replace the form&#8217;s <strong>action</strong> attribute with your own mailing list&#8217;s url.</p>
+
+<h2>Styling the email subscribe section</h2>
+
+<p>Next we want to style the fields. Octopress provides a <strong>styles.scss</strong> file for your custom CSS styles. We are going to make use of that to style your email subscription form.</p>
+
+<figure class='code'><figcaption><span>sass/custom/_styles.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">// This File is imported last, and will override other styles in the cascade</span>
+</span><span class='line'><span class="c1">// Add styles here to make changes without digging in too much</span>
+</span><span class='line'>
+</span><span class='line'><span class="nn">#mc_embed_signup</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// label</span>
+</span><span class='line'>    <span class="nc">.mc-field-group</span> <span class="o">&gt;</span> <span class="nt">label</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// textfield</span>
+</span><span class='line'>    <span class="nt">input</span><span class="nc">.email</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="na">height</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span> <span class="na">margin-top</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span> <span class="na">font-size</span><span class="o">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// subscribe button</span>
+</span><span class='line'>    <span class="nt">input</span><span class="nn">#mc-embedded-subscribe</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#5DA423</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#396516</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="no">auto</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">background</span><span class="o">:</span> <span class="mh">#2BA6CB</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#1E728C</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-webkit-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.5</span><span class="p">)</span> <span class="no">inset</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-moz-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.5</span><span class="p">)</span> <span class="no">inset</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.5</span><span class="p">)</span> <span class="no">inset</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">font-size</span><span class="o">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">line-height</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">margin</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">outline</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">11</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-webkit-transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-moz-transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">-o-transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Copy the above styles to <strong>sass/custom/_styles.scss</strong>. And your are done!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake generate
+</span><span class='line'>rake deploy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Remember to run generate. If everything looks ok, deploy and watch that mailing list grow.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/blog/archives">Blog Archives</a>
@@ -74,8 +302,38 @@
 <aside class="sidebar">
   
     <section>
+  <h1>About</h1>
+  <p>Articles on how to customize your Octopress blog from <a href="http://octopressthemes.com">Octopress Themes</a>.</p>
+</section>
+<section>
+  <h1>Subscribe</h1>
+  <!-- Begin MailChimp Signup Form -->
+  <div id="mc_embed_signup">
+    <form action="http://liangzan.us2.list-manage.com/subscribe/post?u=43276f0c5e7dec4cff937d081&amp;id=0ddcabf9a6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <div class="mc-field-group">
+	<label for="mce-EMAIL">
+	  Enter your email to receive updates
+	</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="you@email.com">
+      </div>
+      <div id="mce-responses" class="clear">
+	<div class="response" id="mce-error-response" style="display:none"></div>
+	<div class="response" id="mce-success-response" style="display:none"></div>
+      </div>
+      <div class="clear">
+	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+      </div>
+    </form>
+  </div>
+  <!--End mc_embed_signup-->
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress/">How to add an email subscription plugin on Octopress</a>
+      </li>
     
   </ul>
 </section>
@@ -92,7 +350,7 @@
   </div>
   <footer role="contentinfo"><p>
   Copyright &copy; 2012 - Octopress Themes -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
 </p>
 
 </footer>

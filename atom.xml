@@ -4,7 +4,7 @@
   <title><![CDATA[The OctopressThemes Blog]]></title>
   <link href="http://octopressthemes.com/blog/atom.xml" rel="self"/>
   <link href="http://octopressthemes.com/blog/"/>
-  <updated>2012-10-23T06:55:32+08:00</updated>
+  <updated>2012-10-23T07:14:09+08:00</updated>
   <id>http://octopressthemes.com/blog/</id>
   <author>
     <name><![CDATA[Octopress Themes]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to add a popular posts plugin on Octopress]]></title>
-    <link href="http://octopressthemes.com/blog/blog/2012/10/22/how-to-add-a-popular-posts-plugin-on-octopress/"/>
+    <link href="http://octopressthemes.com/blog/2012/10/22/how-to-add-a-popular-posts-plugin-on-octopress/"/>
     <updated>2012-10-22T21:44:00+08:00</updated>
-    <id>http://octopressthemes.com/blog/blog/2012/10/22/how-to-add-a-popular-posts-plugin-on-octopress</id>
+    <id>http://octopressthemes.com/blog/2012/10/22/how-to-add-a-popular-posts-plugin-on-octopress</id>
     <content type="html"><![CDATA[<p>A popular posts(or a top posts) section is literally present on every blog on the internet. It recommends quality posts to your readers. Take a look at Jason Cohen&#8217;s <a href="http://blog.asmartbear.com/">blog</a>, Rob Walling&#8217;s <a href="http://www.softwarebyrob.com/">blog</a> and Nati Shalom&#8217;s <a href="http://natishalom.typepad.com/">blog</a>. Sadly <a href="http://octopress.org">Octopress</a> don&#8217;t have a popular posts asides section. Octopress Themes has created a <a href="https://github.com/octopress-themes/popular-posts">popular posts plugin</a> that does that.</p>
 
 <h2>Installation</h2>
@@ -54,9 +54,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to add an email subscription plugin on Octopress]]></title>
-    <link href="http://octopressthemes.com/blog/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress/"/>
+    <link href="http://octopressthemes.com/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress/"/>
     <updated>2012-10-18T06:28:00+08:00</updated>
-    <id>http://octopressthemes.com/blog/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress</id>
+    <id>http://octopressthemes.com/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress</id>
     <content type="html"><![CDATA[<h2>Why do you want to add email subscription?</h2>
 
 <p>An email subscription form is one of the most common features you see on blogs. Yet it is not present by default on <a href="http://octopress.org">Octopress</a>. Besides RSS feeds, your blog should provide an option for readers to subscribe by email. Having a way to reach your readers is <a href="http://www.kalzumeus.com/2012/05/31/can-i-get-your-email/">never a bad thing</a>. It is going to look just like the email subscription section you see on this blog(hint: on the right). Luckily, it is simple enough that you can create one in 5 minutes.</p>

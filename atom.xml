@@ -4,7 +4,7 @@
   <title><![CDATA[The OctopressThemes Blog]]></title>
   <link href="http://octopressthemes.com/blog/atom.xml" rel="self"/>
   <link href="http://octopressthemes.com/blog/"/>
-  <updated>2012-10-23T07:14:09+08:00</updated>
+  <updated>2012-11-04T17:53:24+08:00</updated>
   <id>http://octopressthemes.com/blog/</id>
   <author>
     <name><![CDATA[Octopress Themes]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to change to a photo background for your Octopress blog]]></title>
+    <link href="http://octopressthemes.com/blog/2012/11/04/how-to-change-to-a-photo-background-for-your-octopress-blog/"/>
+    <updated>2012-11-04T17:29:00+08:00</updated>
+    <id>http://octopressthemes.com/blog/2012/11/04/how-to-change-to-a-photo-background-for-your-octopress-blog</id>
+    <content type="html"><![CDATA[<p>The <a href="https://github.com/octopress-themes/new-york">New York theme</a> makes use of a fantastic photo of the New York skyline to act as the background for your blog. It is a common design technique to use a photo to fill up the entire web page. Take a look at <a href="http://about.me">about.me</a> or this <a href="http://line25.com/articles/25-web-designs-with-full-page-background-photos">showcase</a> of full page background designs. We are going to show you how to use an image or photo for your Octopress blog&#8217;s background.</p>
+
+<p>We assume you already have a photo. If not, there are inexpensive <a href="http://www.istockphoto.com">stock photos</a>, or you can find images from <a href="http://www.flickr.com">flickr</a>. Sometimes there are some rare finds on flickr. Do remember to use only <a href="http://creativecommons.org/">creative commons</a> licensed images.</p>
+
+<h2>Using the New York theme as the base</h2>
+
+<p>The New York theme already has CSS styles to use a background image. We are going to work from the code base. Install the <a href="https://github.com/octopress-themes/new-york">New York theme</a>. Once you have installed, take a look at the <strong>source/images</strong> directory. You should see an image called <strong>base.jpg</strong>. Take a look at that. It should be the New York skyline image.</p>
+
+<p><img class="right" src="https://s3.amazonaws.com/static.octopressthemes.com/blog/new-york-base.png" title="New York Skyline" ></p>
+
+<p>All you need to do is to replace <strong>base.jpg</strong> with your own.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Run the <strong>generate</strong> commands to see the end result. Once you are happy with your background image, deploy it.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to add a popular posts plugin on Octopress]]></title>
@@ -26,7 +55,7 @@
 
 <h2>How it works</h2>
 
-<p><img class="right" src="https://s3.amazonaws.com/static.liangzan.net/google_page_rank.png" title="Google Page Rank" ></p>
+<p><img class="right" src="https://s3.amazonaws.com/static.octopressthemes.com/blog/google_page_rank.png" title="Google Page Rank" ></p>
 
 <p>The popularity of each post is calculated by its <a href="http://en.wikipedia.org/wiki/PageRank">Google page rank</a>. Page rank is an authoritative source of page popularity. How did we get the page rank information? There are many <a href="https://addons.mozilla.org/en-US/firefox/addon/seo-status-pagerankalexa-toolb/">browser</a> <a href="https://chrome.google.com/webstore/detail/pagerank-status/hbdkkfheckcdppiaiabobmennhijkknn">plugins</a> that shows you the page rank. There is no official Google API to query for page rank. What they did is to make use of the unofficial api from <a href="http://toolbar.google.com">Google toolbar</a> to make queries. For the popularity posts plugin, we make use of the <a href="https://github.com/blatyo/page_rankr">PageRankr</a> gem to query for page rank information.</p>
 
@@ -67,23 +96,23 @@
 
 <p>After you have created a mailing list, go to the list of mailing lists. There should be an options icon on the right. View the options and select the <strong>forms</strong> link.</p>
 
-<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-list-options-screenshot.png" title="List options screenshot" alt="Mailchimp list options screenshot"></p>
+<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-list-options-screenshot.png" title="List options screenshot" alt="Mailchimp list options screenshot"></p>
 
 <p>You should be led to the create form page. Find the <strong>Share it</strong> tab and click it.</p>
 
-<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-build-form-tab-screenshot.png" title="Build form tab" alt="Mailchimp build form tab screenshot"></p>
+<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-build-form-tab-screenshot.png" title="Build form tab" alt="Mailchimp build form tab screenshot"></p>
 
 <p>You should see the <strong>Share it</strong> tab. Click on the <strong>Create HTML Code For A Small Subscribe Form</strong> button.</p>
 
-<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-share-form-tab-screenshot.png" title="Share form" alt="Mailchimp share form screenshot"></p>
+<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-share-form-tab-screenshot.png" title="Share form" alt="Mailchimp share form screenshot"></p>
 
 <p>Select the <strong>Naked Form</strong> option.</p>
 
-<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-naked-form-option-screenshot.png" title="Naked form" alt="Mailchimp naked form option screenshot"></p>
+<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-naked-form-option-screenshot.png" title="Naked form" alt="Mailchimp naked form option screenshot"></p>
 
 <p>And you should be greeted with the embedded form. Copy the code into your text editor.</p>
 
-<p><img src="https://s3.amazonaws.com/static.liangzan.net/mailchimp-embedded-form-screenshot.png" title="Embedded form" alt="Mailchimp embedded form screenshot"></p>
+<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-embedded-form-screenshot.png" title="Embedded form" alt="Mailchimp embedded form screenshot"></p>
 
 <h2>Creating the email subscribe section</h2>
 

@@ -14,7 +14,7 @@ Installation instructions are available on the [Github page](https://github.com/
 
 ## How it works
 
-{% img right https://s3.amazonaws.com/static.liangzan.net/google_page_rank.png Google Page Rank %}
+{% img right https://s3.amazonaws.com/static.octopressthemes.com/blog/google_page_rank.png Google Page Rank %}
 
 The popularity of each post is calculated by its [Google page rank](http://en.wikipedia.org/wiki/PageRank). Page rank is an authoritative source of page popularity. How did we get the page rank information? There are many [browser](https://addons.mozilla.org/en-US/firefox/addon/seo-status-pagerankalexa-toolb/) [plugins](https://chrome.google.com/webstore/detail/pagerank-status/hbdkkfheckcdppiaiabobmennhijkknn) that shows you the page rank. There is no official Google API to query for page rank. What they did is to make use of the unofficial api from [Google toolbar](http://toolbar.google.com) to make queries. For the popularity posts plugin, we make use of the [PageRankr](https://github.com/blatyo/page_rankr) gem to query for page rank information.
 

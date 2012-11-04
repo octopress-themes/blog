@@ -16,23 +16,23 @@ We are going to use [MailChimp](http://mailchimp.com) to create a mailing list f
 
 After you have created a mailing list, go to the list of mailing lists. There should be an options icon on the right. View the options and select the __forms__ link.
 
-{% img https://s3.amazonaws.com/static.liangzan.net/mailchimp-list-options-screenshot.png 'List options screenshot' 'Mailchimp list options screenshot' %}
+{% img https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-list-options-screenshot.png 'List options screenshot' 'Mailchimp list options screenshot' %}
 
 You should be led to the create form page. Find the __Share it__ tab and click it.
 
-{% img https://s3.amazonaws.com/static.liangzan.net/mailchimp-build-form-tab-screenshot.png 'Build form tab' 'Mailchimp build form tab screenshot' %}
+{% img https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-build-form-tab-screenshot.png 'Build form tab' 'Mailchimp build form tab screenshot' %}
 
 You should see the __Share it__ tab. Click on the __Create HTML Code For A Small Subscribe Form__ button.
 
-{% img https://s3.amazonaws.com/static.liangzan.net/mailchimp-share-form-tab-screenshot.png 'Share form' 'Mailchimp share form screenshot' %}
+{% img https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-share-form-tab-screenshot.png 'Share form' 'Mailchimp share form screenshot' %}
 
 Select the __Naked Form__ option.
 
-{% img https://s3.amazonaws.com/static.liangzan.net/mailchimp-naked-form-option-screenshot.png 'Naked form' 'Mailchimp naked form option screenshot' %}
+{% img https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-naked-form-option-screenshot.png 'Naked form' 'Mailchimp naked form option screenshot' %}
 
 And you should be greeted with the embedded form. Copy the code into your text editor.
 
-{% img https://s3.amazonaws.com/static.liangzan.net/mailchimp-embedded-form-screenshot.png 'Embedded form' 'Mailchimp embedded form screenshot' %}
+{% img https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-embedded-form-screenshot.png 'Embedded form' 'Mailchimp embedded form screenshot' %}
 
 ## Creating the email subscribe section
 

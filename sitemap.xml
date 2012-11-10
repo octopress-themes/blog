@@ -19,11 +19,17 @@
         <lastmod>2012-11-04T17:52:46+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://octopressthemes.com/blog/2012/11/10/adding-a-modal-dialog-to-octopress-with-foundation-zurb/
+        </loc>
+        <lastmod>2012-11-10T20:09:27+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://octopressthemes.com/blog/blog/archives/</loc>
-        <lastmod>2012-11-04T17:52:46+08:00</lastmod>
+        <lastmod>2012-11-10T20:09:27+08:00</lastmod>
     </url>
     <url>
         <loc>http://octopressthemes.com/blog/</loc>
-        <lastmod>2012-11-04T17:52:46+08:00</lastmod>
+        <lastmod>2012-11-10T20:09:27+08:00</lastmod>
     </url>
 </urlset>

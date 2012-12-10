@@ -9,7 +9,7 @@
   <meta name="author" content="Octopress Themes">
 
   
-  <meta name="description" content="In this post, I&#8217;m going to show you how to add modal dialogs to your Octopress blog. Some people call it lightbox, or modal popup. Essentially &hellip;">
+  <meta name="description" content="A related posts section helps your readers to discover posts that they may like. It is very effective for increasing readership. In Octopress, it is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,179 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/11/adding-a-related-posts-section-to-your-post/">Adding a Related Posts Section to Your Post</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-11T05:31:00+08:00" pubdate data-updated="true">Dec 11<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A related posts section helps your readers to discover posts that they may like. It is very effective for increasing readership. In <a href="http://octopress.org">Octopress</a>, it is very easy to add a related posts section. <a href="https://github.com/mojombo/jekyll">Jekyll</a> already has a related posts plugin. All we need to do is to enable it. We have installed related posts for this blog. Take a look at the bottom of the post to see it.</p>
+
+<p>What we&#8217;re showing is very similar to what <a href="https://github.com/jcftang/octopress-relatedposts">Jimmy Tang has posted</a>. However, we&#8217;re placing the related posts section at <strong>the bottom</strong> of each post instead of the sidebar. The reader will be able to find the related posts when he has finished reading. If the article is long, readers won&#8217;t be able to see the related posts section as it is hidden by the scrolling.</p>
+
+<h2>Installation of dependencies</h2>
+
+<p>Much of this information is <a href="https://github.com/jcftang/octopress-relatedposts">available</a> from Jimmy Tang&#8217;s post. I&#8217;ll only provide a summary.</p>
+
+<p>First add the following line to your <b>_config.yml</b>.</p>
+
+<figure class='code'><figcaption><span>_config.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">lsi</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next we need to add the <a href="https://rubygems.org/gems/gsl">GSL ruby gem</a> to help hasten the computation. Before that, you probably need to add the dependencies for the GSL gem.</p>
+
+<h3>GSL OS X fix</h3>
+
+<p>Run the following shell commands to install <a href="http://www.gnu.org/software/gsl/">GSL</a> on Mac OS X.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew tap homebrew/versions
+</span><span class='line'>brew install gsl114
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>GSL Linux fix</h3>
+
+<p>Run the following shell commands to install GSL on Linux.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>curl -O http://mirror.aarnet.edu.au/pub/gnu/gsl/gsl-1.14.tar.gz
+</span><span class='line'>tar xfz gsl-1.14.tar.gz
+</span><span class='line'><span class="nb">cd </span>gsl-1.14
+</span><span class='line'>./configure
+</span><span class='line'>make clean
+</span><span class='line'>make
+</span><span class='line'>sudo make install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Installing the GSL ruby gem</h3>
+
+<p>Now, add the gem to your Gemfile.</p>
+
+<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;gsl&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To install it, run this on your shell</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>bundle install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally we just need to run the generate command to generate the related posts.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake generate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That is it! Your related posts should be ready.</p>
+
+<h2>Installation of related posts</h2>
+
+<p>I&#8217;ve created a related posts snippet here. Copy the code and add it as a new file at <strong>source/_includes/post/related_posts.html</strong>. This checks if the site has any related posts and adds 3 links. You may change the number of related posts to show by changing the limit.</p>
+
+<figure class='code'><figcaption><span>source/_includes/post/related_posts.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>
+</span><span class='line'>{% if site.related_posts %}
+</span><span class='line'>  <span class="nt">&lt;h3&gt;</span>Related posts<span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;posts&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  {% for post in site.related_posts limit:3 %}
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;related&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ root_url }}{{ post.url }}&quot;</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  {% endfor %}
+</span><span class='line'>  <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>{% endif %}
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Next we need to add it to the footer of the article. We have included it by adding the location of the related posts snippet in <strong>source/_layouts/post.html</strong>. Below is the diff for the file.</p>
+
+<figure class='code'><figcaption><span>source/_layouts/post.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='diff'><span class='line'>
+</span><span class='line'><span class="gd">--- a/source/_layouts/post.html</span>
+</span><span class='line'><span class="gi">+++ b/source/_layouts/post.html</span>
+</span><span class='line'><span class="gu">@@ -11,6 +11,7 @@ single: true</span>
+</span><span class='line'>       {% include post/author.html %}
+</span><span class='line'>       {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+</span><span class='line'>       {% include post/categories.html %}
+</span><span class='line'><span class="gi">+      {% include post/related_posts.html %}</span>
+</span><span class='line'>     &lt;/p&gt;
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once added, we need to run generate to create the related posts section.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake generate
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And that concludes our post on adding a related post section to your Octopress blog.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -624,6 +797,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/11/adding-a-related-posts-section-to-your-post/">Adding a related posts section to your post</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/11/10/adding-a-modal-dialog-to-octopress-with-foundation-zurb/">Adding a modal dialog to Octopress with Foundation Zurb</a>

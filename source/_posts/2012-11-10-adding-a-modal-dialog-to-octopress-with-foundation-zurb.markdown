@@ -8,6 +8,8 @@ categories:
 
 In this post, I'm going to show you how to add modal dialogs to your Octopress blog. Some people call it lightbox, or modal popup. Essentially, they bring focus to content. I'm sure you must have came across it. Usually they are used to show photos, messages and forms. Sadly Octopress does not come with modal dialogs by default. But it is trivial to add it to your Octopress blog. I've selected [Foundation Zurb's](http://foundation.zurb.com/) reveal modal plugin. There are plenty of other plugins which would have done the job as nicely.
 
+<!-- more -->
+
 First take a look at the examples by clicking on the link below.
 
 <a href="#" data-reveal-id="text-link-modal">Example modal with a text link</a>

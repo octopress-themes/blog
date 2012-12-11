@@ -8,6 +8,8 @@ categories:
 
 A popular posts(or a top posts) section is literally present on every blog on the internet. It recommends quality posts to your readers. Take a look at Jason Cohen's [blog](http://blog.asmartbear.com/), Rob Walling's [blog](http://www.softwarebyrob.com/) and Nati Shalom's [blog](http://natishalom.typepad.com/). Sadly [Octopress](http://octopress.org) don't have a popular posts asides section. Octopress Themes has created a [popular posts plugin](https://github.com/octopress-themes/popular-posts) that does that.
 
+<!-- more -->
+
 ## Installation
 
 Installation instructions are available on the [Github page](https://github.com/octopress-themes/popular-posts). The plugin is covered in tests, documented in [tomdoc](http://tomdoc.org), and works. Feel free to try it.

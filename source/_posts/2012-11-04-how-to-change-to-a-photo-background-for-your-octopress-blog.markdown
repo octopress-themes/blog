@@ -8,6 +8,8 @@ categories:
 
 The [New York theme](https://github.com/octopress-themes/new-york) makes use of a fantastic photo of the New York skyline to act as the background for your blog. It is a common design technique to use a photo to fill up the entire web page. Take a look at [about.me](http://about.me) or this [showcase](http://line25.com/articles/25-web-designs-with-full-page-background-photos) of full page background designs. We are going to show you how to use an image or photo for your Octopress blog's background.
 
+<!-- more -->
+
 We assume you already have a photo. If not, there are inexpensive [stock photos](http://www.istockphoto.com), or you can find images from [flickr](http://www.flickr.com). Sometimes there are some rare finds on flickr. Do remember to use only [creative commons](http://creativecommons.org/) licensed images.
 
 ## Using the New York theme as the base

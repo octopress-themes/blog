@@ -8,6 +8,8 @@ categories:
 
 A related posts section helps your readers to discover posts that they may like. It is very effective for increasing readership. In [Octopress](http://octopress.org), it is very easy to add a related posts section. [Jekyll](https://github.com/mojombo/jekyll) already has a related posts plugin. All we need to do is to enable it. We have installed related posts for this blog. Take a look at the bottom of the post to see it.
 
+<!-- more -->
+
 What we're showing is very similar to what [Jimmy Tang has posted](https://github.com/jcftang/octopress-relatedposts). However, we're placing the related posts section at __the bottom__ of each post instead of the sidebar. The reader will be able to find the related posts when he has finished reading. If the article is long, readers won't be able to see the related posts section as it is hidden by the scrolling.
 
 ## Installation of dependencies

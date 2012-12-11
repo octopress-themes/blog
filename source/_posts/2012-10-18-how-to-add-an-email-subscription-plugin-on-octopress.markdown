@@ -10,6 +10,8 @@ categories:
 
 An email subscription form is one of the most common features you see on blogs. Yet it is not present by default on [Octopress](http://octopress.org). Besides RSS feeds, your blog should provide an option for readers to subscribe by email. Having a way to reach your readers is [never a bad thing](http://www.kalzumeus.com/2012/05/31/can-i-get-your-email/). It is going to look just like the email subscription section you see on this blog(hint: on the right). Luckily, it is simple enough that you can create one in 5 minutes.
 
+<!-- more -->
+
 ## Creating a mailing list on MailChimp
 
 We are going to use [MailChimp](http://mailchimp.com) to create a mailing list for your blog readers. We want to create the mailing list and grab the embedded subcription form. If you already know how to do this, skip this section.

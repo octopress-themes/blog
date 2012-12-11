@@ -109,144 +109,12 @@
 
   <div class="entry-content"><p>A related posts section helps your readers to discover posts that they may like. It is very effective for increasing readership. In <a href="http://octopress.org">Octopress</a>, it is very easy to add a related posts section. <a href="https://github.com/mojombo/jekyll">Jekyll</a> already has a related posts plugin. All we need to do is to enable it. We have installed related posts for this blog. Take a look at the bottom of the post to see it.</p>
 
-<p>What we&#8217;re showing is very similar to what <a href="https://github.com/jcftang/octopress-relatedposts">Jimmy Tang has posted</a>. However, we&#8217;re placing the related posts section at <strong>the bottom</strong> of each post instead of the sidebar. The reader will be able to find the related posts when he has finished reading. If the article is long, readers won&#8217;t be able to see the related posts section as it is hidden by the scrolling.</p>
-
-<h2>Installation of dependencies</h2>
-
-<p>Much of this information is <a href="https://github.com/jcftang/octopress-relatedposts">available</a> from Jimmy Tang&#8217;s post. I&#8217;ll only provide a summary.</p>
-
-<p>First add the following line to your <b>_config.yml</b>.</p>
-
-<figure class='code'><figcaption><span>_config.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">lsi</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Next we need to add the <a href="https://rubygems.org/gems/gsl">GSL ruby gem</a> to help hasten the computation. Before that, you probably need to add the dependencies for the GSL gem.</p>
-
-<h3>GSL OS X fix</h3>
-
-<p>Run the following shell commands to install <a href="http://www.gnu.org/software/gsl/">GSL</a> on Mac OS X.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>brew tap homebrew/versions
-</span><span class='line'>brew install gsl114
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>GSL Linux fix</h3>
-
-<p>Run the following shell commands to install GSL on Linux.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>curl -O http://mirror.aarnet.edu.au/pub/gnu/gsl/gsl-1.14.tar.gz
-</span><span class='line'>tar xfz gsl-1.14.tar.gz
-</span><span class='line'><span class="nb">cd </span>gsl-1.14
-</span><span class='line'>./configure
-</span><span class='line'>make clean
-</span><span class='line'>make
-</span><span class='line'>sudo make install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Installing the GSL ruby gem</h3>
-
-<p>Now, add the gem to your Gemfile.</p>
-
-<figure class='code'><figcaption><span>Gemfile</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;gsl&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>To install it, run this on your shell</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>bundle install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Finally we just need to run the generate command to generate the related posts.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake generate
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That is it! Your related posts should be ready.</p>
-
-<h2>Installation of related posts</h2>
-
-<p>I&#8217;ve created a related posts snippet here. Copy the code and add it as a new file at <strong>source/_includes/post/related_posts.html</strong>. This checks if the site has any related posts and adds 3 links. You may change the number of related posts to show by changing the limit.</p>
-
-<figure class='code'><figcaption><span>source/_includes/post/related_posts.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>
-</span><span class='line'>{% if site.related_posts %}
-</span><span class='line'>  <span class="nt">&lt;h3&gt;</span>Related posts<span class="nt">&lt;/h3&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;posts&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  {% for post in site.related_posts limit:3 %}
-</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;related&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ root_url }}{{ post.url }}&quot;</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  {% endfor %}
-</span><span class='line'>  <span class="nt">&lt;/ul&gt;</span>
-</span><span class='line'>{% endif %}
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Next we need to add it to the footer of the article. We have included it by adding the location of the related posts snippet in <strong>source/_layouts/post.html</strong>. Below is the diff for the file.</p>
-
-<figure class='code'><figcaption><span>source/_layouts/post.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='diff'><span class='line'>
-</span><span class='line'><span class="gd">--- a/source/_layouts/post.html</span>
-</span><span class='line'><span class="gi">+++ b/source/_layouts/post.html</span>
-</span><span class='line'><span class="gu">@@ -11,6 +11,7 @@ single: true</span>
-</span><span class='line'>       {% include post/author.html %}
-</span><span class='line'>       {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
-</span><span class='line'>       {% include post/categories.html %}
-</span><span class='line'><span class="gi">+      {% include post/related_posts.html %}</span>
-</span><span class='line'>     &lt;/p&gt;
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Once added, we need to run generate to create the related posts section.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake generate
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And that concludes our post on adding a related post section to your Octopress blog.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/12/11/adding-a-related-posts-section-to-your-post/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -282,129 +150,12 @@
 
   <div class="entry-content"><p>In this post, I&#8217;m going to show you how to add modal dialogs to your Octopress blog. Some people call it lightbox, or modal popup. Essentially, they bring focus to content. I&#8217;m sure you must have came across it. Usually they are used to show photos, messages and forms. Sadly Octopress does not come with modal dialogs by default. But it is trivial to add it to your Octopress blog. I&#8217;ve selected <a href="http://foundation.zurb.com/">Foundation Zurb&#8217;s</a> reveal modal plugin. There are plenty of other plugins which would have done the job as nicely.</p>
 
-<p>First take a look at the examples by clicking on the link below.</p>
-
-<p><a href="#" data-reveal-id="text-link-modal">Example modal with a text link</a></p>
-
-<div id="text-link-modal" class="reveal-modal">
-  <h2>This is a modal.</h2>
-  <p>
-    Reveal makes these very easy to summon and dismiss. The close button is simple an anchor with a unicode
-    character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will
-    also dismiss it.
-  </p>
-  <a class="close-reveal-modal">×</a>
-</div>
-
-
-<p>The link is visible while the modal is hidden. Clicking on the link reveals the modal. The code for the example is below.</p>
-
-<figure class='code'><figcaption><span>Example of the text link modal dialog</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">data-reveal-id=</span><span class="s">&quot;text-link-modal&quot;</span><span class="nt">&gt;</span>Example modal with a text link<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;text-link-modal&quot;</span> <span class="na">class=</span><span class="s">&quot;reveal-modal&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;h2&gt;</span>This is a modal.<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;p&gt;</span>
-</span><span class='line'>    Reveal makes these very easy to summon and dismiss. The close button is simple an anchor with a unicode
-</span><span class='line'>    character icon and a class of <span class="nt">&lt;code&gt;</span>close-reveal-modal<span class="nt">&lt;/code&gt;</span>. Clicking anywhere outside the modal will
-</span><span class='line'>    also dismiss it.
-</span><span class='line'>  <span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;close-reveal-modal&quot;</span><span class="nt">&gt;</span>×<span class="nt">&lt;/a&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Here is another example using an image. Photo credits to <a href="http://www.flickr.com/photos/publicenergy/">publicenergy</a>.</p>
-
-<p><a href="#" data-reveal-id="image-link-modal"><img src="http://farm3.staticflickr.com/2058/1846375599_cec42383dd_m.jpg"/ alt="Cow. Photo credits to publicenergy"></a></p>
-
-<div id="image-link-modal" class="reveal-modal">
-  <img src="http://farm3.staticflickr.com/2058/1846375599_cec42383dd_z.jpg" alt="Cow. Photo credits to publicenergy"/>
-</div>
-
-
-
-
-<figure class='code'><figcaption><span>Example of the image modal dialog</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">data-reveal-id=</span><span class="s">&quot;image-link-modal&quot;</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://farm3.staticflickr.com/2058/1846375599_cec42383dd_m.jpg&quot;</span><span class="err">/</span> <span class="na">alt=</span><span class="s">&quot;Cow. Photo credits to publicenergy&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;image-link-modal&quot;</span> <span class="na">class=</span><span class="s">&quot;reveal-modal&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://farm3.staticflickr.com/2058/1846375599_cec42383dd_z.jpg&quot;</span> <span class="na">alt=</span><span class="s">&quot;Cow. Photo credits to publicenergy&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You may use the above examples on your blog posts.</p>
-
-<h2>Installation</h2>
-
-<p>To install the modal dialog, we need to modify 2 files.</p>
-
-<p>First, find <strong>source/_includes/head.html</strong> from your blog and add these 2 lines to load jquery and foundation.</p>
-
-<figure class='code'><figcaption><span>head.html - source/_includes/head.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/javascripts/foundation.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Foundation can be <a href="http://foundation.zurb.com/download.php">downloaded</a>. Download the default package, unzip it. We only need <strong>foundation.min.js</strong>. Copy <strong>foundation.min.js</strong> to <strong>source/javascripts/</strong>.</p>
-
-<p>Next we need to add the CSS styles for the modal. Add these lines to <strong>sass/custom/_styles.scss</strong>.</p>
-
-<figure class='code'><figcaption><span>styles.css - sass/custom/_styles.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="c">/* CSS for jQuery Reveal Plugin Maintained for Foundation. foundation.zurb.com Free to use under the MIT license. http://www.opensource.org/licenses/mit-license.php */</span>
-</span><span class='line'><span class="c">/* Reveal Modals ---------------------- */</span>
-</span><span class='line'><span class="nc">.reveal-modal-bg</span> <span class="p">{</span> <span class="k">position</span><span class="o">:</span> <span class="k">fixed</span><span class="p">;</span> <span class="k">height</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span> <span class="k">background</span><span class="o">:</span> <span class="m">#000</span><span class="p">;</span> <span class="k">background</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">45</span><span class="p">);</span> <span class="k">z-index</span><span class="o">:</span> <span class="m">40</span><span class="p">;</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="k">top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">left</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="nc">.reveal-modal</span> <span class="p">{</span> <span class="k">background</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span> <span class="k">visibility</span><span class="o">:</span> <span class="k">hidden</span><span class="p">;</span> <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="k">top</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span> <span class="k">left</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">-260px</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span> <span class="m">520px</span><span class="p">;</span> <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span> <span class="k">z-index</span><span class="o">:</span> <span class="m">41</span><span class="p">;</span> <span class="k">padding</span><span class="o">:</span> <span class="m">30px</span><span class="p">;</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">4</span><span class="p">);</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">4</span><span class="p">);</span> <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">4</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal</span> <span class="nc">.close-reveal-modal</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">22px</span><span class="p">;</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">2</span><span class="o">.</span><span class="m">2</span><span class="n">rem</span><span class="p">;</span> <span class="k">line-height</span><span class="o">:</span> <span class="o">.</span><span class="m">5</span><span class="p">;</span> <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span> <span class="k">top</span><span class="o">:</span> <span class="m">8px</span><span class="p">;</span> <span class="k">right</span><span class="o">:</span> <span class="m">11px</span><span class="p">;</span> <span class="k">color</span><span class="o">:</span> <span class="m">#aaa</span><span class="p">;</span> <span class="k">text-shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">-1px</span> <span class="m">1px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">6</span><span class="p">);</span> <span class="k">font-weight</span><span class="o">:</span> <span class="k">bold</span><span class="p">;</span> <span class="k">cursor</span><span class="o">:</span> <span class="k">pointer</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal.small</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">30</span><span class="o">%</span><span class="p">;</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">-15</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal.medium</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">40</span><span class="o">%</span><span class="p">;</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">-20</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal.large</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">60</span><span class="o">%</span><span class="p">;</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">-30</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal.xlarge</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">70</span><span class="o">%</span><span class="p">;</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">-35</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal.expand</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">90</span><span class="o">%</span><span class="p">;</span> <span class="k">margin-left</span><span class="o">:</span> <span class="m">-45</span><span class="o">%</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal</span> <span class="nc">.row</span> <span class="p">{</span> <span class="k">min-width</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal</span> <span class="o">&gt;</span> <span class="nd">:first-child</span> <span class="p">{</span> <span class="k">margin-top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'><span class="nc">.reveal-modal</span> <span class="o">&gt;</span> <span class="nd">:last-child</span> <span class="p">{</span> <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@media</span> <span class="nt">print</span> <span class="p">{</span> <span class="nc">.reveal-modal</span> <span class="p">{</span> <span class="k">border</span><span class="o">:</span> <span class="k">solid</span> <span class="m">1px</span> <span class="m">#000</span><span class="p">;</span> <span class="k">background</span><span class="o">:</span> <span class="nb">white</span> <span class="cp">!important</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And that is it!</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/10/adding-a-modal-dialog-to-octopress-with-foundation-zurb/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -440,27 +191,12 @@
 
   <div class="entry-content"><p>The <a href="https://github.com/octopress-themes/new-york">New York theme</a> makes use of a fantastic photo of the New York skyline to act as the background for your blog. It is a common design technique to use a photo to fill up the entire web page. Take a look at <a href="http://about.me">about.me</a> or this <a href="http://line25.com/articles/25-web-designs-with-full-page-background-photos">showcase</a> of full page background designs. We are going to show you how to use an image or photo for your Octopress blog&#8217;s background.</p>
 
-<p>We assume you already have a photo. If not, there are inexpensive <a href="http://www.istockphoto.com">stock photos</a>, or you can find images from <a href="http://www.flickr.com">flickr</a>. Sometimes there are some rare finds on flickr. Do remember to use only <a href="http://creativecommons.org/">creative commons</a> licensed images.</p>
-
-<h2>Using the New York theme as the base</h2>
-
-<p>The New York theme already has CSS styles to use a background image. We are going to work from the code base. Install the <a href="https://github.com/octopress-themes/new-york">New York theme</a>. Once you have installed, take a look at the <strong>source/images</strong> directory. You should see an image called <strong>base.jpg</strong>. Take a look at that. It should be the New York skyline image.</p>
-
-<p><img class="right" src="https://s3.amazonaws.com/static.octopressthemes.com/blog/new-york-base.png" title="New York Skyline" ></p>
-
-<p>All you need to do is to replace <strong>base.jpg</strong> with your own.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Run the <strong>generate</strong> commands to see the end result. Once you are happy with your background image, deploy it.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake deploy</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/04/how-to-change-to-a-photo-background-for-your-octopress-blog/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -496,37 +232,12 @@
 
   <div class="entry-content"><p>A popular posts(or a top posts) section is literally present on every blog on the internet. It recommends quality posts to your readers. Take a look at Jason Cohen&#8217;s <a href="http://blog.asmartbear.com/">blog</a>, Rob Walling&#8217;s <a href="http://www.softwarebyrob.com/">blog</a> and Nati Shalom&#8217;s <a href="http://natishalom.typepad.com/">blog</a>. Sadly <a href="http://octopress.org">Octopress</a> don&#8217;t have a popular posts asides section. Octopress Themes has created a <a href="https://github.com/octopress-themes/popular-posts">popular posts plugin</a> that does that.</p>
 
-<h2>Installation</h2>
-
-<p>Installation instructions are available on the <a href="https://github.com/octopress-themes/popular-posts">Github page</a>. The plugin is covered in tests, documented in <a href="http://tomdoc.org">tomdoc</a>, and works. Feel free to try it.</p>
-
-<h2>How it works</h2>
-
-<p><img class="right" src="https://s3.amazonaws.com/static.octopressthemes.com/blog/google_page_rank.png" title="Google Page Rank" ></p>
-
-<p>The popularity of each post is calculated by its <a href="http://en.wikipedia.org/wiki/PageRank">Google page rank</a>. Page rank is an authoritative source of page popularity. How did we get the page rank information? There are many <a href="https://addons.mozilla.org/en-US/firefox/addon/seo-status-pagerankalexa-toolb/">browser</a> <a href="https://chrome.google.com/webstore/detail/pagerank-status/hbdkkfheckcdppiaiabobmennhijkknn">plugins</a> that shows you the page rank. There is no official Google API to query for page rank. What they did is to make use of the unofficial api from <a href="http://toolbar.google.com">Google toolbar</a> to make queries. For the popularity posts plugin, we make use of the <a href="https://github.com/blatyo/page_rankr">PageRankr</a> gem to query for page rank information.</p>
-
-<p>The popularity posts section is generated with the site. You don&#8217;t have to generate it separately. It is a static page. As your Octopress blog is a static site, we thought the best way is to generate a static page. Page rank is only updated every 3 months. Your popular posts won&#8217;t change from hour to hour. A static page is sufficient.</p>
-
-<p>The plugin comes with a caching mechanism. As it make page rank queries, the returned result is stored in a file. When your Octopress blog is generated the next time, the plugin gets the page rank result directly from the cache. This makes site generation a lot faster. Caches are made to expire in 1 month.</p>
-
-<h2>Diving into the source code</h2>
-
-<p>How did we generate the page? Let us do a brief code walkthrough. Those interested in Jekyll plugin development will find this useful. Do refer to the <a href="https://github.com/octopress-themes/popular-posts">source</a> to understand the context.</p>
-
-<p>As you already know, Octopress builds on <a href="https://github.com/mojombo/jekyll">Jekyll</a>. Jekyll has 2 classes: <strong>Post</strong> and <strong>Site</strong>. They represent the blog post and the blog site respectively. First, we added a <strong>page_rank</strong> method to <strong>Post</strong>. The <strong>page_rank</strong> method returns the page rank of the post. It also performs caching.</p>
-
-<h3>Hooking it up</h3>
-
-<p>Next, we try to hook on to the site generation process. In the <strong>Site</strong> class, there is the <strong>read</strong> method. In the original Jekyll implementation, it reads the blog posts and stores them in references. We wrote a method that sorts your blog posts by page rank, and set it to a <strong>popular_posts</strong> reference. We then make use of the <a href="http://apidock.com/ruby/Module/alias_method">alias_method</a> to hook it to the original <strong>read</strong> method so that it gets executed. Now information on popular posts is stored.</p>
-
-<p>Next we need to generate the HTML. Jekyll makes use of the <a href="http://liquidmarkup.org">Liquid</a> templating language to generate the HTML. In essence, Liquid takes a template, and replace Liquid markup with values that are passed to it. Similarly, we need to pass in the <strong>popular_posts</strong> value to our template. Again we make use of <strong>alias_method</strong> to hook it to the <strong>site_payload</strong> method in the original implementation. The <strong>site_payload</strong> method prepares the values for passing into the Liquid templates.</p>
-
-<p>Octopress currently runs plugins defined in the <strong>plugins</strong> folder. To install, we need to copy the plugin to the <strong>plugins</strong> folder.</p>
-
-<p>So that is how it works. To develop plugins, it helps to understand Jekyll code. Please contact <a href="http://liangzan.net">me</a> should there be problems with the plugin or if there are any questions related to this post.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/22/how-to-add-a-popular-posts-plugin-on-octopress/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -564,197 +275,12 @@
 
 <p>An email subscription form is one of the most common features you see on blogs. Yet it is not present by default on <a href="http://octopress.org">Octopress</a>. Besides RSS feeds, your blog should provide an option for readers to subscribe by email. Having a way to reach your readers is <a href="http://www.kalzumeus.com/2012/05/31/can-i-get-your-email/">never a bad thing</a>. It is going to look just like the email subscription section you see on this blog(hint: on the right). Luckily, it is simple enough that you can create one in 5 minutes.</p>
 
-<h2>Creating a mailing list on MailChimp</h2>
-
-<p>We are going to use <a href="http://mailchimp.com">MailChimp</a> to create a mailing list for your blog readers. We want to create the mailing list and grab the embedded subcription form. If you already know how to do this, skip this section.</p>
-
-<p>After you have created a mailing list, go to the list of mailing lists. There should be an options icon on the right. View the options and select the <strong>forms</strong> link.</p>
-
-<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-list-options-screenshot.png" title="List options screenshot" alt="Mailchimp list options screenshot"></p>
-
-<p>You should be led to the create form page. Find the <strong>Share it</strong> tab and click it.</p>
-
-<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-build-form-tab-screenshot.png" title="Build form tab" alt="Mailchimp build form tab screenshot"></p>
-
-<p>You should see the <strong>Share it</strong> tab. Click on the <strong>Create HTML Code For A Small Subscribe Form</strong> button.</p>
-
-<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-share-form-tab-screenshot.png" title="Share form" alt="Mailchimp share form screenshot"></p>
-
-<p>Select the <strong>Naked Form</strong> option.</p>
-
-<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-naked-form-option-screenshot.png" title="Naked form" alt="Mailchimp naked form option screenshot"></p>
-
-<p>And you should be greeted with the embedded form. Copy the code into your text editor.</p>
-
-<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/mailchimp-embedded-form-screenshot.png" title="Embedded form" alt="Mailchimp embedded form screenshot"></p>
-
-<h2>Creating the email subscribe section</h2>
-
-<p>We are going to add a new aside section on your Octopress config. I am assuming the new subscribe section is located at <strong>custom/asides/subscribe.html</strong>.</p>
-
-<figure class='code'><figcaption><span>_config.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">default_asides</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">custom/asides/about.html</span><span class="p-Indicator">,</span> <span class="nv">custom/asides/subscribe.html</span><span class="p-Indicator">,</span> <span class="nv">asides/recent_posts.html</span><span class="p-Indicator">,</span> <span class="nv">asides/github.html</span><span class="p-Indicator">,</span> <span class="nv">asides/twitter.html</span><span class="p-Indicator">,</span> <span class="nv">asides/delicious.html</span><span class="p-Indicator">,</span> <span class="nv">asides/pinboard.html</span><span class="p-Indicator">,</span> <span class="nv">asides/googleplus.html</span><span class="p-Indicator">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>On your subscribe section, add the following code. It should be very similar to the code you copied from MailChimp.</p>
-
-<figure class='code'><figcaption><span>source/custom/asides/subscribe.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;section&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;h1&gt;</span>Subscribe<span class="nt">&lt;/h1&gt;</span>
-</span><span class='line'>  <span class="c">&lt;!-- Begin MailChimp Signup Form --&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mc_embed_signup&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;http://url-to-your-mailing-list&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">id=</span><span class="s">&quot;mc-embedded-subscribe-form&quot;</span> <span class="na">name=</span><span class="s">&quot;mc-embedded-subscribe-form&quot;</span> <span class="na">class=</span><span class="s">&quot;validate&quot;</span> <span class="na">target=</span><span class="s">&quot;_blank&quot;</span> <span class="na">novalidate</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;mc-field-group&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;mce-EMAIL&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    Enter your email to receive updates
-</span><span class='line'>  <span class="nt">&lt;/label&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;email&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span> <span class="na">name=</span><span class="s">&quot;EMAIL&quot;</span> <span class="na">class=</span><span class="s">&quot;required email&quot;</span> <span class="na">id=</span><span class="s">&quot;mce-EMAIL&quot;</span> <span class="na">placeholder=</span><span class="s">&quot;you@email.com&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;mce-responses&quot;</span> <span class="na">class=</span><span class="s">&quot;clear&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;response&quot;</span> <span class="na">id=</span><span class="s">&quot;mce-error-response&quot;</span> <span class="na">style=</span><span class="s">&quot;display:none&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;response&quot;</span> <span class="na">id=</span><span class="s">&quot;mce-success-response&quot;</span> <span class="na">style=</span><span class="s">&quot;display:none&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;clear&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Subscribe&quot;</span> <span class="na">name=</span><span class="s">&quot;subscribe&quot;</span> <span class="na">id=</span><span class="s">&quot;mc-embedded-subscribe&quot;</span> <span class="na">class=</span><span class="s">&quot;button&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/form&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>  <span class="c">&lt;!--End mc_embed_signup--&gt;</span>
-</span><span class='line'><span class="nt">&lt;/section&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Remember to replace the form&#8217;s <strong>action</strong> attribute with your own mailing list&#8217;s url.</p>
-
-<h2>Styling the email subscribe section</h2>
-
-<p>Next we want to style the fields. Octopress provides a <strong>styles.scss</strong> file for your custom CSS styles. We are going to make use of that to style your email subscription form.</p>
-
-<figure class='code'><figcaption><span>sass/custom/_styles.scss</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="c1">// This File is imported last, and will override other styles in the cascade</span>
-</span><span class='line'><span class="c1">// Add styles here to make changes without digging in too much</span>
-</span><span class='line'>
-</span><span class='line'><span class="nn">#mc_embed_signup</span> <span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">// label</span>
-</span><span class='line'>    <span class="nc">.mc-field-group</span> <span class="o">&gt;</span> <span class="nt">label</span> <span class="p">{</span>
-</span><span class='line'>  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">// textfield</span>
-</span><span class='line'>    <span class="nt">input</span><span class="nc">.email</span> <span class="p">{</span>
-</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="na">height</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="p">;</span> <span class="na">margin-top</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span><span class="p">;</span> <span class="na">font-size</span><span class="o">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">// subscribe button</span>
-</span><span class='line'>    <span class="nt">input</span><span class="nn">#mc-embedded-subscribe</span> <span class="p">{</span>
-</span><span class='line'>  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#5DA423</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#396516</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="no">auto</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">background</span><span class="o">:</span> <span class="mh">#2BA6CB</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#1E728C</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">-webkit-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.5</span><span class="p">)</span> <span class="no">inset</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">-moz-box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.5</span><span class="p">)</span> <span class="no">inset</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">box-shadow</span><span class="o">:</span> <span class="mi">0</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.5</span><span class="p">)</span> <span class="no">inset</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">cursor</span><span class="o">:</span> <span class="no">pointer</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">font-size</span><span class="o">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">font-weight</span><span class="o">:</span> <span class="no">bold</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">line-height</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">margin</span><span class="o">:</span> <span class="mi">8</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">outline</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">11</span><span class="kt">px</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">text-decoration</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">-webkit-transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">-moz-transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">-o-transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">transition</span><span class="o">:</span> <span class="no">background-color</span> <span class="mi">0</span><span class="mf">.15</span><span class="kt">s</span> <span class="n">ease-in-out</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Copy the above styles to <strong>sass/custom/_styles.scss</strong>. And your are done!</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>rake generate
-</span><span class='line'>rake deploy
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Remember to run generate. If everything looks ok, deploy and watch that mailing list grow.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/18/how-to-add-an-email-subscription-plugin-on-octopress/">Read on &rarr;</a>
+    </footer>
   
 
 

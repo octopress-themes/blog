@@ -4,7 +4,7 @@
   <title><![CDATA[The OctopressThemes Blog]]></title>
   <link href="http://octopressthemes.com/blog/atom.xml" rel="self"/>
   <link href="http://octopressthemes.com/blog/"/>
-  <updated>2012-12-11T06:10:26+08:00</updated>
+  <updated>2012-12-12T06:41:24+08:00</updated>
   <id>http://octopressthemes.com/blog/</id>
   <author>
     <name><![CDATA[Octopress Themes]]></name>
@@ -19,6 +19,9 @@
     <updated>2012-12-11T05:31:00+08:00</updated>
     <id>http://octopressthemes.com/blog/2012/12/11/adding-a-related-posts-section-to-your-post</id>
     <content type="html"><![CDATA[<p>A related posts section helps your readers to discover posts that they may like. It is very effective for increasing readership. In <a href="http://octopress.org">Octopress</a>, it is very easy to add a related posts section. <a href="https://github.com/mojombo/jekyll">Jekyll</a> already has a related posts plugin. All we need to do is to enable it. We have installed related posts for this blog. Take a look at the bottom of the post to see it.</p>
+
+<!-- more -->
+
 
 <p>What we&#8217;re showing is very similar to what <a href="https://github.com/jcftang/octopress-relatedposts">Jimmy Tang has posted</a>. However, we&#8217;re placing the related posts section at <strong>the bottom</strong> of each post instead of the sidebar. The reader will be able to find the related posts when he has finished reading. If the article is long, readers won&#8217;t be able to see the related posts section as it is hidden by the scrolling.</p>
 
@@ -166,6 +169,9 @@
     <id>http://octopressthemes.com/blog/2012/11/10/adding-a-modal-dialog-to-octopress-with-foundation-zurb</id>
     <content type="html"><![CDATA[<p>In this post, I&#8217;m going to show you how to add modal dialogs to your Octopress blog. Some people call it lightbox, or modal popup. Essentially, they bring focus to content. I&#8217;m sure you must have came across it. Usually they are used to show photos, messages and forms. Sadly Octopress does not come with modal dialogs by default. But it is trivial to add it to your Octopress blog. I&#8217;ve selected <a href="http://foundation.zurb.com/">Foundation Zurb&#8217;s</a> reveal modal plugin. There are plenty of other plugins which would have done the job as nicely.</p>
 
+<!-- more -->
+
+
 <p>First take a look at the examples by clicking on the link below.</p>
 
 <p><a href="#" data-reveal-id="text-link-modal">Example modal with a text link</a></p>
@@ -297,6 +303,9 @@
     <id>http://octopressthemes.com/blog/2012/11/04/how-to-change-to-a-photo-background-for-your-octopress-blog</id>
     <content type="html"><![CDATA[<p>The <a href="https://github.com/octopress-themes/new-york">New York theme</a> makes use of a fantastic photo of the New York skyline to act as the background for your blog. It is a common design technique to use a photo to fill up the entire web page. Take a look at <a href="http://about.me">about.me</a> or this <a href="http://line25.com/articles/25-web-designs-with-full-page-background-photos">showcase</a> of full page background designs. We are going to show you how to use an image or photo for your Octopress blog&#8217;s background.</p>
 
+<!-- more -->
+
+
 <p>We assume you already have a photo. If not, there are inexpensive <a href="http://www.istockphoto.com">stock photos</a>, or you can find images from <a href="http://www.flickr.com">flickr</a>. Sometimes there are some rare finds on flickr. Do remember to use only <a href="http://creativecommons.org/">creative commons</a> licensed images.</p>
 
 <h2>Using the New York theme as the base</h2>
@@ -325,6 +334,9 @@
     <updated>2012-10-22T21:44:00+08:00</updated>
     <id>http://octopressthemes.com/blog/2012/10/22/how-to-add-a-popular-posts-plugin-on-octopress</id>
     <content type="html"><![CDATA[<p>A popular posts(or a top posts) section is literally present on every blog on the internet. It recommends quality posts to your readers. Take a look at Jason Cohen&#8217;s <a href="http://blog.asmartbear.com/">blog</a>, Rob Walling&#8217;s <a href="http://www.softwarebyrob.com/">blog</a> and Nati Shalom&#8217;s <a href="http://natishalom.typepad.com/">blog</a>. Sadly <a href="http://octopress.org">Octopress</a> don&#8217;t have a popular posts asides section. Octopress Themes has created a <a href="https://github.com/octopress-themes/popular-posts">popular posts plugin</a> that does that.</p>
+
+<!-- more -->
+
 
 <h2>Installation</h2>
 
@@ -366,6 +378,9 @@
     <content type="html"><![CDATA[<h2>Why do you want to add email subscription?</h2>
 
 <p>An email subscription form is one of the most common features you see on blogs. Yet it is not present by default on <a href="http://octopress.org">Octopress</a>. Besides RSS feeds, your blog should provide an option for readers to subscribe by email. Having a way to reach your readers is <a href="http://www.kalzumeus.com/2012/05/31/can-i-get-your-email/">never a bad thing</a>. It is going to look just like the email subscription section you see on this blog(hint: on the right). Luckily, it is simple enough that you can create one in 5 minutes.</p>
+
+<!-- more -->
+
 
 <h2>Creating a mailing list on MailChimp</h2>
 

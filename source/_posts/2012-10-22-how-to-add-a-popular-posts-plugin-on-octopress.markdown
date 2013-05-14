@@ -6,13 +6,13 @@ comments: true
 categories:
 ---
 
-A popular posts(or a top posts) section is literally present on every blog on the internet. It recommends quality posts to your readers. Take a look at Jason Cohen's [blog](http://blog.asmartbear.com/), Rob Walling's [blog](http://www.softwarebyrob.com/) and Nati Shalom's [blog](http://natishalom.typepad.com/). Sadly [Octopress](http://octopress.org) don't have a popular posts asides section. Octopress Themes has created a [popular posts plugin](https://github.com/octopress-themes/popular-posts) that does that.
+A popular posts(or a top posts) section is literally present on every blog on the internet. It recommends quality posts to your readers. Take a look at Jason Cohen's [blog](http://blog.asmartbear.com/), Rob Walling's [blog](http://www.softwarebyrob.com/) and Nati Shalom's [blog](http://natishalom.typepad.com/). Sadly [Octopress](http://octopress.org) don't have a popular posts asides section. Octopress Themes has created a [popular posts plugin](https://github.com/octothemes/popular-posts) that does that.
 
 <!-- more -->
 
 ## Installation
 
-Installation instructions are available on the [Github page](https://github.com/octopress-themes/popular-posts). The plugin is covered in tests, documented in [tomdoc](http://tomdoc.org), and works. Feel free to try it.
+Installation instructions are available on the [Github page](https://github.com/octothemes/popular-posts). The plugin is covered in tests, documented in [tomdoc](http://tomdoc.org), and works. Feel free to try it.
 
 ## How it works
 
@@ -26,7 +26,7 @@ The plugin comes with a caching mechanism. As it make page rank queries, the ret
 
 ## Diving into the source code
 
-How did we generate the page? Let us do a brief code walkthrough. Those interested in Jekyll plugin development will find this useful. Do refer to the [source](https://github.com/octopress-themes/popular-posts) to understand the context.
+How did we generate the page? Let us do a brief code walkthrough. Those interested in Jekyll plugin development will find this useful. Do refer to the [source](https://github.com/octothemes/popular-posts) to understand the context.
 
 As you already know, Octopress builds on [Jekyll](https://github.com/mojombo/jekyll). Jekyll has 2 classes: __Post__ and __Site__. They represent the blog post and the blog site respectively. First, we added a __page_rank__ method to __Post__. The __page_rank__ method returns the page rank of the post. It also performs caching.
 

@@ -4,7 +4,7 @@
   <title><![CDATA[The OctopressThemes Blog]]></title>
   <link href="http://octopressthemes.com/blog/atom.xml" rel="self"/>
   <link href="http://octopressthemes.com/blog/"/>
-  <updated>2013-05-15T06:15:10+08:00</updated>
+  <updated>2013-05-15T06:25:38+08:00</updated>
   <id>http://octopressthemes.com/blog/</id>
   <author>
     <name><![CDATA[Octopress Themes]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Changing the Github organization name to Octothemes]]></title>
+    <link href="http://octopressthemes.com/blog/2013/05/15/changing-the-github-organization-name-to-octothemes/"/>
+    <updated>2013-05-15T06:17:00+08:00</updated>
+    <id>http://octopressthemes.com/blog/2013/05/15/changing-the-github-organization-name-to-octothemes</id>
+    <content type="html"><![CDATA[<p>I am moving all the themes and plugin repositories to be under a new Github organization called <a href="https://github.com/octothemes">Octothemes</a>. <a href="https://github.com/imathis">Brandon</a>, the author of <a href="https://octopress.org">Octopress</a> asked me to change it as the organization name caused people to assume it is an official Octopress project. We are not an official Octpress project, but a third party one. I think it is a reasonable request. So here we are on a new Github organization. To minimize disturbances to existing users, the old repositories will be preserved until the end of June. My sincere apologies for any disturbances caused.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Adding a related posts section to your post]]></title>

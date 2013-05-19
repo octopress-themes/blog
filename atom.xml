@@ -4,7 +4,7 @@
   <title><![CDATA[The OctopressThemes Blog]]></title>
   <link href="http://octopressthemes.com/blog/atom.xml" rel="self"/>
   <link href="http://octopressthemes.com/blog/"/>
-  <updated>2013-05-15T06:25:38+08:00</updated>
+  <updated>2013-05-20T06:30:15+08:00</updated>
   <id>http://octopressthemes.com/blog/</id>
   <author>
     <name><![CDATA[Octopress Themes]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress localized to Chinese]]></title>
+    <link href="http://octopressthemes.com/blog/2013/05/20/octopress-localized-to-chinese/"/>
+    <updated>2013-05-20T06:22:00+08:00</updated>
+    <id>http://octopressthemes.com/blog/2013/05/20/octopress-localized-to-chinese</id>
+    <content type="html"><![CDATA[<p>I often find Octopress blogs with posts written in other languages have their titles and headings written in english. It looks inconsistent and makes the blog feel sloppy. To cater to the chinese users, we are maintaining a fork of the Octopress repository in Chinese. The code is the same. Only the headers and titles are localized to Chinese.</p>
+
+<!-- more -->
+
+
+<p>Your localized Chinese blog will look like this.</p>
+
+<p><img src="https://s3.amazonaws.com/static.octopressthemes.com/blog/octopress-chinese.png" title="Octopress in Chinese locale" ></p>
+
+<p>The repository can be found <a href="https://github.com/octothemes/octopress-chinese">on Github</a>. Feel free to raise an issue if there are any problems. More languages will be on the way!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Changing the Github organization name to Octothemes]]></title>
